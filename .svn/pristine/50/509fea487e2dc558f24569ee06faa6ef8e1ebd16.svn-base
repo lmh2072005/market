@@ -364,10 +364,13 @@ body{
     margin:0 auto;
 }
 
-/*sign in begin*/
+/*sign  begin*/
 .signBody{
     padding:50px 0 20px;
     width:900px;
+}
+.signUpBody{
+    border:1px solid #d2d2d2;
 }
 .signInImg{
     width:460px;
@@ -380,18 +383,37 @@ body{
     padding:10px 30px;
     margin-left:33px;
 }
+.signupBox{
+    width:580px;
+    padding:10px 0 36px 30px;
+    float:left;
+    border-right:1px solid #D2D2D2;
+
+}
 .signInTitle{
     color:#353536;
     font-size:22px;
 }
-.signInItem{
+.signupTitle{
+    padding:5px;
+    background:#f56d6f;
+    font-size:14px;
+    font-weight:800;
+    padding:6px 12px;
+    color:#fff;
+}
+.signItem{
     width:251px;
     border:1px solid #d2d2d2;
     margin-bottom:10px;
     padding:6px 0 6px 8px;
     position:relative;
 }
-.signInItem.itemFocus{
+.signUpItem{
+    width:360px;
+    margin: 0 auto 10px;
+}
+.signItem.itemFocus{
     -webkit-box-shadow:0 0 3px 1px #f54040;
     -webkit-transition:all .2s ease-out 0s;
     -moz-box-shadow:0 0 3px 1px #f54040;
@@ -400,10 +422,10 @@ body{
     transition:all .2s ease-out 0s;
     border:1px solid #f54040\9;
 }
-.signInItem.itemFocus .placeHolder{
+.signItem.itemFocus .placeHolder{
     color:#d2d2d2;
 }
-.signInItem input{
+.signItem input{
     width:100%;
     height:22px;
     line-height:20px;
@@ -412,11 +434,12 @@ body{
     font-size:22px;
     font-weight:800;
 }
-.signInItem .placeHolder{
+.signItem .placeHolder{
     position:absolute;
     left:10px;
     top:11px;
     cursor:text;
+    font-weight:bold;
 }
 .showMsgBox{
     height:49px;
@@ -432,6 +455,9 @@ body{
     left:0;
     display:none;
 }
+.signUpBody .showMsg{
+    left:105px;
+}
 .btnSignIn{
     width:260px;
     height:40px;
@@ -444,10 +470,48 @@ body{
     cursor:pointer;
     margin-top:20px;
 }
-.signUpLinkBox{
+.btnSignup{
+    width:260px;
+    height:40px;
+    color:#fff;
+    font-size:18px;
+    font-weight:800;
+    background:#d03737;
+    border:none;
+    cursor:pointer;
+    margin-top:20px;
+    margin-left:160px;
+}
+.signLinkBox{
     text-align:right;
     margin-top:5px;
 }
-.signUpLinkBox a:hover{
+.signLinkBox a:hover{
     text-decoration:underline;
 }
+.signUpxieyi{
+   text-align:center;
+}
+.signUpxieyi a{
+    color:#000;
+    text-decoration:underline;
+}
+.signupPhone{
+    float:left;
+    width:287px;
+    border-left:none;
+    text-align:center;
+    height:321px;
+}
+.signupPhone .phoneImg{
+    margin-top:40px;
+}
+.signupPhone .phone{
+    font-size:14px;
+    font-weight:800;
+    margin-top:5px;
+}
+.signupPhone .tishi{
+    margin-top:3px;
+}
+/*sign  begin*/

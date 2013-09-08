@@ -18,20 +18,25 @@ $(function(){
                 msg : '',
                 ease : null,  //show 'ease-in' 1000
                 fn : function(){},
-                delay : 2000
+                delay : 2000,
+                afterHide : true
             };
             opts = $.extend(options, opts);
             if(!opts.obj){
                 return;
             }
             $(opts.obj).html(opts.msg).show(opts.ease);
-            setTimeout(function(){
-                $(opts.obj).fadeOut();
-                if(typeof opts.fn == 'function'){ opts.fn(); }
-            },opts.delay);
+            if(typeof opts.fn == 'function'){ opts.fn(); };
+            if(opts.afterHide){
+                 setTimeout(function(){
+                    $(opts.obj).fadeOut();
+                },opts.delay);
+            }
+
         }
 
         function validatorForm(form){
+            // use ag :{require:true,reg:^\\d+$,regMsg:用户名格式不对,requireMsg:用户名必填}
             var form = $(form),
                 eles = form.find('[valid]'),
                 msg = {},
@@ -41,11 +46,16 @@ $(function(){
                 if(JSON.parse(valid.require.toLowerCase()) && /^\s*$/.test($(v).val())){
                     msg[v.name] = valid.requireMsg || "required";
                     isValid = false;
-                }else if(JSON.parse(valid.reg.toLowerCase())){
+                }else if(valid.reg){
                     var reg = new RegExp(valid.reg);
                     if(!reg.test($(v).val())){
                        msg[v.name] = valid.regMsg || v.name + "does not match the reg";
                        isValid = false;
+                    }
+                }else if(valid.compare){
+                    if(form.find('[name="'+valid.compare+'"]').val() != $(v).val()){
+                        msg[v.name] = valid.compareMsg || v.name + "must be equal with compare";
+                        isValid = false;
                     }
                 }else{
                     //other match

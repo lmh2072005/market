@@ -114,16 +114,16 @@
                                 <div class="signInTitle">登录中心</div>
                                 <div class="showMsgBox"><label class="showMsg" id="loginMsg">消息</label></div>
                                 <form id="siginForm">
-                                       <div class="signInItem">
-                                            <input type="text"  name="username" class="input" autocomplete="off" valid="{require:true,reg:null,regMsg:用户名格式不对,requireMsg:用户名必填}"/>
+                                       <div class="signItem">
+                                            <input type="text"  name="username" class="input" autocomplete="off" valid="{require:true,regMsg:用户名格式不对,requireMsg:用户名必填}"/>
                                             <label class="placeHolder">用户名</label>
                                        </div>
-                                       <div class="signInItem">
-                                            <input type="password"  name="password" class="input" valid="{require:true,reg:null,requireMsg:密码必填}"/>
+                                       <div class="signItem">
+                                            <input type="password"  name="password" class="input" valid="{require:true,requireMsg:密码必填}"/>
                                             <label class="placeHolder">密码</label>
                                        </div>
                                        <input type="submit" value="登录" class="btnSignIn" id="btnSignIn" />
-                                       <p class="signUpLinkBox"><a href="#">免费注册</a></p>
+                                       <p class="signLinkBox"><a href="#">免费注册</a></p>
                                 </form>
                         </div>
                 </div>
@@ -181,19 +181,19 @@
         <script src="js/json2.js"></script>
         <script src="js/common.js"></script>
         <script>
-            $('.signInItem .placeHolder').click(function(){
+            $('.signItem .placeHolder').click(function(){
                 $(this).prev().focus();
             });
-            $('.signInItem .input').focus(function(){
+            $('.signItem .input').focus(function(){
                 $(this).parent().addClass('itemFocus').siblings().removeClass('itemFocus');
             });
-            $('.signInItem .input').blur(function(){
+            $('.signItem .input').blur(function(){
                 $(this).parent().removeClass('itemFocus');
             });
-            $('.signInItem .input').keydown(function(){
+            $('.signItem .input').keydown(function(){
                 $(this).next().hide();
             });
-            $('.signInItem .input').keyup(function(){
+            $('.signItem .input').keyup(function(){
                 var val = $(this).val();
                 if(val!=''){
                     $(this).next().hide();
