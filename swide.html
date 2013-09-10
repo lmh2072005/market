@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>test</title>
+
+        <style>
+            *{margin:0;padding:0;}
+            img{border:none;}
+            .swideBox{
+                width:950px;
+                height:350px;
+                overflow:hidden;
+                border:1px solid #d2d2d2;
+            }
+            .swideBox ul{
+                width:100%;
+                height:100%;
+            }
+            .swideBox ul li{
+                width:100%;
+                height:100%;
+                display:none;
+            }
+             .swideBox ul li.cur{
+                display:block;
+             }
+            .swideBox ul li a{
+                display:block;
+                width:100%;
+                height:100%;
+            }
+            .swideBox .swideIcon{
+                margin-top:-30px;
+                text-align:center;
+            }
+            .swideBox .swideIcon b{
+                display:inline-block;
+                width:12px;
+                height:12px;
+                background:#d2d2d2;
+                border-radius:8px;
+                margin-right:5px;
+                cursor:pointer;
+            }
+            .swideBox .swideIcon b.cur{
+                background:#ff3300;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bodyBox">
+            <div class="swideBox" id="homeSwide">
+                <ul>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>
+                <div class="swideIcon">
+                    <b></b><b></b><b></b><b></b><b></b>
+                </div>
+            </div>
+            <div class="swideBox" id="abc">
+                <ul>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                </ul>
+                <div class="swideIcon">
+                    <b></b><b></b><b></b>
+                </div>
+            </div>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script>
+            $(function(){
+                $.fn.swideBox = function(opts){
+                    var self = $(this),
+                        options = {
+                            duration : 3000,
+                            autoRun : true,
+                            index : 0,
+                            action : 'click'
+                        },
+                        o = $.extend(options, opts);
+                    self.itemNums = self.find('ul li').length;
+                    var init = function(index){
+                        self.find('ul li').removeClass('cur').eq(index).addClass('cur');
+                        self.find('.swideIcon b').removeClass('cur').eq(index).addClass('cur');
+                    };
+                    init(o.index);
+                    if(o.autoRun){
+                       autoRun(self);
+                    }
+                    function autoRun(obj){
+                        obj.t = setTimeout(function(){
+                            o.index ++;
+                            if(o.index >= obj.itemNums){
+                                o.index = 0;
+                            }
+                            init(o.index);
+                            autoRun(obj);
+                        },o.duration);
+                    }
+                    self.find('.swideIcon b').bind(o.action, function(){
+                        clearTimeout(self.t);
+                        var index = self.find('.swideIcon b').index($(this));
+                        o.index = index;
+                        init(index);
+                        if(o.autoRun){
+                            autoRun(self);
+                        }
+                    });
+                    self.find('ul li').bind('mouseover',function(){
+                         clearTimeout(self.t);
+                    });
+                    self.find('ul li').bind('mouseout',function(){
+                         if(o.autoRun){
+                            autoRun(self);
+                         }
+                    });
+                }
+                $("#homeSwide").swideBox();
+                $("#abc").swideBox();
+            });
+        </script>
+    </body>
+</html>
